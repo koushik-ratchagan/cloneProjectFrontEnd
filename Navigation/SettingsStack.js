@@ -3,14 +3,24 @@ import React from "react";
 import Settings from "../screens/SettingsScreen/Settings";
 import NotificationSettingScreen from "../screens/SettingsScreen/NotificationSettingScreen";
 import MessageSettings from "../screens/SettingsScreen/MessageSettings";
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from "@react-navigation/stack";
+
+import TimeLineSettings from "../screens/SettingsScreen/TimeLineSettings";
+import ExploreSettiings from "../screens/SettingsScreen/ExploreSettiings";
 
 const Stack = createStackNavigator();
 
-const SettingsStack = () => {
+const SettingsStack = ({ navigation }) => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Settings" component={Settings} />
+
+      <Stack.Screen name="TimelineSettings" component={TimeLineSettings} />
+
+      <Stack.Screen name="ExploreSettiings" component={ExploreSettiings} />
       <Stack.Screen
         name="notification settings"
         component={NotificationSettingScreen}

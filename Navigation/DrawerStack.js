@@ -20,7 +20,11 @@ const DrawerStack = () => {
         options={{ headerShown: false }}
         component={HomeNavigation}
       />
-      <Drawer.Screen name="Profile" component={Profile} />
+      <Drawer.Screen
+        options={{ headerShown: false }}
+        name="Profile"
+        component={Profile}
+      />
       <Drawer.Screen name="Premium" component={Premium} />
       <Drawer.Screen name="Communities" component={Communities} />
       <Drawer.Screen name="BookMarks" component={BookMarks} />

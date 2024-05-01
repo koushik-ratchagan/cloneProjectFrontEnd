@@ -13,10 +13,13 @@ import { AntDesign } from "@expo/vector-icons";
 import { useDrawerStatus } from "@react-navigation/drawer";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { setinitialSettingsScreen } from "../../redux/SettingRedux/SettingsAction";
 
 const Tab = createBottomTabNavigator();
 
 const HomeScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
   const isDrawerOpen = useDrawerStatus() === "open";
 
   const navtigator = useNavigation();
@@ -37,13 +40,16 @@ const HomeScreen = ({ navigation }) => {
     );
   };
 
-  const handelSettingsScreen = () => {
-    navtigator.navigate("Settings");
+  const handelSettingsScreen = (navigationKey, navigationScreen) => {
+    navtigator.navigate(navigationKey, { screen: navigationScreen });
+    // dispatch(setinitialSettingsScreen(navigationScreen));
   };
 
-  const renderHeaderRight = () => {
+  const renderHeaderRight = (navigationKey, navigationScreen) => {
     return (
-      <TouchableOpacity onPress={handelSettingsScreen}>
+      <TouchableOpacity
+        onPress={() => handelSettingsScreen(navigationKey, navigationScreen)}
+      >
         <Feather name="settings" size={24} color="black" />
       </TouchableOpacity>
     );
@@ -66,7 +72,7 @@ const HomeScreen = ({ navigation }) => {
           },
 
           headerRight: () => {
-            return renderHeaderRight();
+            return renderHeaderRight("SettingsStack", "TimelineSettings");
           },
         }}
       />
@@ -83,7 +89,7 @@ const HomeScreen = ({ navigation }) => {
           },
 
           headerRight: () => {
-            return renderHeaderRight();
+            return renderHeaderRight("SettingsStack", "ExploreSettiings");
           },
         }}
       />
@@ -112,7 +118,7 @@ const HomeScreen = ({ navigation }) => {
             return renderHearderLeft();
           },
           headerRight: () => {
-            return renderHeaderRight();
+            return renderHeaderRight("SettingsStack", "notification settings");
           },
         }}
       />
@@ -126,7 +132,7 @@ const HomeScreen = ({ navigation }) => {
             return renderHearderLeft();
           },
           headerRight: () => {
-            return renderHeaderRight();
+            return renderHeaderRight("SettingsStack", "message settings");
           },
         }}
       />

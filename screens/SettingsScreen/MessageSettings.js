@@ -1,11 +1,13 @@
-import { View, Text } from "react-native";
+import { View, Text, SafeAreaView } from "react-native";
 import React from "react";
+import SettingHeader from "../../components/Headers/SettingHeader";
 
 const MessageSettings = () => {
   return (
-    <View>
-      <Text>MessageSettings</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      {/* <SettingHeader backBtn={true} title="Message" /> */}
+      <View style={{ backgroundColor: "#ccc", flex: 1 }}></View>
+    </SafeAreaView>
   );
 };
 

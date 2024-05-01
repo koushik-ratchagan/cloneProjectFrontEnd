@@ -1,11 +1,13 @@
-import { View, Text } from "react-native";
+import { View, Text, SafeAreaView } from "react-native";
 import React from "react";
+import SettingHeader from "../../components/Headers/SettingHeader";
 
 const NotificationSettingScreen = () => {
   return (
-    <View>
-      <Text>NotificationSettingScreen</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      {/* <SettingHeader backBtn={true} title="Notification" /> */}
+      <View style={{ backgroundColor: "#cccc", flex: 1 }}></View>
+    </SafeAreaView>
   );
 };
 

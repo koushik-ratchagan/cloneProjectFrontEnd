@@ -6,10 +6,7 @@ import {
 } from "@react-navigation/stack";
 import HomeScreen from "../screens/AuthScreen/HomeScreen";
 import SettingsStack from "./SettingsStack";
-import Settings from "../screens/SettingsScreen/Settings";
-import NotificationSettingScreen from "../screens/SettingsScreen/NotificationSettingScreen";
-import MessageSettings from "../screens/SettingsScreen/MessageSettings";
-
+import AddPostStack from "./AddPostStack";
 const Stack = createStackNavigator();
 
 const HomeNavigation = () => {
@@ -20,12 +17,26 @@ const HomeNavigation = () => {
         name="HomeScreen"
         component={HomeScreen}
       />
-      <Stack.Screen name="Settings" component={Settings} />
+
       <Stack.Screen
-        name="notification settings"
-        component={NotificationSettingScreen}
+        options={{
+          headerShown: false,
+          gestureEnabled: true,
+          ...TransitionPresets.ModalSlideFromBottomIOS,
+        }}
+        name="SettingsStack"
+        component={SettingsStack}
       />
-      <Stack.Screen name="message settings" component={MessageSettings} />
+
+      <Stack.Screen
+        options={{
+          headerShown: false,
+          gestureEnabled: true,
+          ...TransitionPresets.ModalSlideFromBottomIOS,
+        }}
+        name="AddPostStack"
+        component={AddPostStack}
+      />
     </Stack.Navigator>
   );
 };
